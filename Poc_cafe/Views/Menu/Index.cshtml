@@ -4,18 +4,23 @@
 @{
 }
 
-@model List<Item>
+@model List<Items>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <link rel="stylesheet" href="~/css/styles.css" />
 <!-- content starts here -->
 <div class="container">
-    @foreach (var item in Model)
+    @foreach (var itemgroup in Model.GroupBy(item => item.Item_Catagory))
     {
-    <button class="accordion">@item.Catagory</button>
+        <button class="accordion">@itemgroup.Key</button>
         <div class="accordion-content">
-            <img src="~/img/@item.img" style="width: 10%" />
-            <span style="top: 30%; padding: 1%; font-weight:400">@item.name</span>
-            <span style="float: right">@item.price</span>
+            @foreach (var item in itemgroup)
+            {
+            <div>
+                <img src="~/img/@item.Item_Img " style="width: 10%" />
+                <span style="top: 30%; padding: 1%; font-weight:400">@item.Item_Name</span>
+                <span style="float: right">@item.Item_Price </span>
+            </div>
+            }
         </div>
     }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Poc_cafe.Data;
 using Poc_cafe.Models;
 using System;
 using System.Collections.Generic;
@@ -9,24 +10,14 @@ namespace Poc_cafe.Controllers
 {
     public class MenuController : Controller
     {
+        private AppDbContext context;
+        public MenuController(AppDbContext appDbContext)
+        {
+            context = appDbContext;
+        }
         public IActionResult Index()
         {
-            List<Item> items = new List<Item>();
-            items.Add(new Item()
-            {
-                img = "bas.png",
-                name = "name2",
-                price = 50,
-                Catagory= "Catagory1"
-            });
-            items.Add(new Item()
-            {
-                img = "bas.png",
-                name = "name3",
-                price = 50,
-                Catagory = "Catagory2"
-            });
-
+            var items = context.Items.ToList();
             return View(items);
         }
     }
