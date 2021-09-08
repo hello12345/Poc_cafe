@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Poc_cafe.Controllers
 {
-    public class Menu : Controller
+    public class MenuController : Controller
     {
         public IActionResult Index()
         {
