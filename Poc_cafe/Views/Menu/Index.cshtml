@@ -3,4 +3,59 @@
 *@
 @{
 }
-<h1>piizzaa</h1>
+
+@model List<Item>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" href="~/css/styles.css" />
+<!-- content starts here -->
+<div class="container">
+    @foreach (var item in Model)
+    {
+    <button class="accordion">@item.Catagory</button>
+        <div class="accordion-content">
+            <img src="~/img/@item.img" style="width: 10%" />
+            <span style="top: 30%; padding: 1%; font-weight:400">@item.name</span>
+            <span style="float: right">@item.price</span>
+        </div>
+    }
+
+
+    @*<button class="accordion">Accordian #2</button>
+        <div class="accordion-content">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas
+                deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis
+                repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti,
+                recusandae! Animi, sapiente, nostrum?
+            </p>
+        </div>
+
+        <button class="accordion">Accordian #3</button>
+        <div class="accordion-content">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas
+                deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis
+                repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti,
+                recusandae! Animi, sapiente, nostrum?
+            </p>
+        </div>*@
+</div>
+
+<script>
+    var accordions = document.getElementsByClassName("accordion");
+
+    for (var i = 0; i < accordions.length; i++) {
+        accordions[i].onclick = function () {
+            this.classList.toggle("is-open");
+
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                // accordion is currently open, so close it
+                content.style.maxHeight = null;
+            } else {
+                // accordion is currently closed, so open it
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        };
+    }
+</script>
